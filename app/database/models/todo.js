@@ -39,7 +39,7 @@ module.exports = (sequelize, DataTypes) => {
   };
 
   const errorMessage = () => {
-    res.send({ error: 'データベース間のエラーが起きました。' });
+    console.log('データベース間のエラーが起きました。');
   };
 
   Todo.init({

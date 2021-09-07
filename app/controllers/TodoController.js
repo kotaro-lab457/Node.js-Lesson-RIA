@@ -26,9 +26,9 @@ module.exports = {
     };
     await Todo.addTodo(param)
       .then(() => {
-        res.redirect('/todo');
+        redirectTodo(res);
       }).catch(() => {
-        errorMessage();
+        errorMessage(res);
       });
   },
   updateTodoById: async (req, res, next) => {
@@ -39,24 +39,28 @@ module.exports = {
     }
     await Todo.updateTodo(param, { where: { id: req.params.id } })
       .then(() => {
-        res.redirect('/todo');
+        redirectTodo();
       })
       .catch(() => {
-        errorMessage();
+        errorMessage(res);
       });
   },
   deleteTodoById: async (req, res, next) => {
     // ここを実装してね
     await Todo.deleteTodo({ where: { id: req.params.id } })
       .then(() => {
-        res.redirect('/todo');
+        redirectTodo(res);
       })
       .catch(() => {
-        errorMessage();
+        errorMessage(res);
       });
   },
 };
 
-const errorMessage = () => {
-  res.send({ error: 'エラーが起きました。' });
+const errorMessage = (res) => {
+  res.send('エラーが起きました。');
+};
+
+const redirectTodo = (res) => {
+  res.redirect('/todo');
 };
