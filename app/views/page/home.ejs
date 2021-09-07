@@ -1,0 +1,14 @@
+<h1>home</h1>
+<%- include('../components/addTodoForm.ejs') %>
+<ul class="list">
+  <% todoList.forEach((val) => { %>
+    <li class="list__item">
+        <p>id: <%= val.id %></p>
+        <p class="list__title">タイトル: <%= val.title %></p>
+        <p class="list__content">内容: <%= val.content %></p>
+    </li>
+    <div class="list__actions">
+      <a type="button" href="/todo/<%= val.id %>">詳細</a>
+    </div>
+  <% });   %>
+</ul>
