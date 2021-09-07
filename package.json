@@ -1,10 +1,32 @@
 {
-  "name": "Node.js-Lesson-RIA",
+  "name": "practice",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon"
   },
-  "devDependencies": {
-    "ejs": "^3.1.3",
-    "express": "^4.17.1"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kotaro-lab457/Node_practice.git"
+  },
+  "author": "Myserver",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kotaro-lab457/Node_practice/issues"
+  },
+  "homepage": "https://github.com/kotaro-lab457/Node_practice#readme",
+  "dependencies": {
+    "cross-env": "^7.0.3",
+    "csurf": "^1.11.0",
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "method-override": "^3.0.0",
+    "mysql2": "^2.2.5",
+    "nodemon": "^2.0.12",
+    "sequelize": "^5.22.4",
+    "sequelize-cli": "^5.5.1"
   }
 }
