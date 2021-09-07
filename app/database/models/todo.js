@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
       return this.create(params)
         .then((todo) => todo)
         .catch(() => {
-          res.send({ error: 'エラーが起きました。' });
+          errorMessage();
         });
     };
 
@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
       return this.update(params, where)
         .then((todo) => console.log(todo))
         .catch(() => {
-          res.send({ error: 'エラーが起きました。' });
+          errorMessage();
         });
     };
 
@@ -33,9 +33,13 @@ module.exports = (sequelize, DataTypes) => {
       return this.destroy(id)
         .then((todo) => todo)
         .catch(() => {
-          res.send({ error: 'エラーが起きました。' });
+          errorMessage();
         });
     };
+  };
+
+  const errorMessage = () => {
+    res.send({ error: 'データベース間のエラーが起きました。' });
   };
 
   Todo.init({

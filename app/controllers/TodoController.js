@@ -24,11 +24,12 @@ module.exports = {
       title: req.body['todo-title'],
       content: req.body['todo-content'],
     };
-    await Todo.addTodo(param).then(() => {
-      res.redirect('/todo');
-    }).catch(() => {
-      res.send({ error: 'エラーが起きました。' });
-    })
+    await Todo.addTodo(param)
+      .then(() => {
+        res.redirect('/todo');
+      }).catch(() => {
+        errorMessage();
+      });
   },
   updateTodoById: async (req, res, next) => {
     // ここを実装してね
@@ -36,14 +37,26 @@ module.exports = {
       title: req.body['todo-title'],
       content: req.body['todo-content'],
     }
-    await Todo.updateTodo(param, { where: { id: req.params.id } }).then(() => {
-      res.redirect('/todo');
-    })
+    await Todo.updateTodo(param, { where: { id: req.params.id } })
+      .then(() => {
+        res.redirect('/todo');
+      })
+      .catch(() => {
+        errorMessage();
+      });
   },
   deleteTodoById: async (req, res, next) => {
     // ここを実装してね
-    await Todo.deleteTodo({ where: { id: req.params.id } }).then(() => {
-      res.redirect('/todo');
-    })
+    await Todo.deleteTodo({ where: { id: req.params.id } })
+      .then(() => {
+        res.redirect('/todo');
+      })
+      .catch(() => {
+        errorMessage();
+      });
   },
-}
+};
+
+const errorMessage = () => {
+  res.send({ error: 'エラーが起きました。' });
+};
