@@ -39,7 +39,7 @@ module.exports = {
     }
     await Todo.updateTodo(param, { where: { id: req.params.id } })
       .then(() => {
-        redirectTodo();
+        redirectTodo(res);
       })
       .catch(() => {
         errorMessage(res);
